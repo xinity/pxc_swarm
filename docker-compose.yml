@@ -26,7 +26,7 @@ services:
         failure_action: continue
         monitor: 60s
         max_failure_ratio: 0.3
-      # placement constraint - in this case on 'worker' nodes only
+      # placement constraint - in this case on 'manager' nodes only
       placement:
         constraints: [node.role == manager]
 
