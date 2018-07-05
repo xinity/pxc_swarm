@@ -2,11 +2,7 @@
 
 #Deploy RancherOS Virtual Machines and switch to latest Docker Engine available
 for i in pxcm1 pxcw1 pxcw2 pxcw3;
-    do docker-machine create -d virtualbox --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso $i;
-    docker-machine ssh $i "sudo ros engine switch docker-17.04.0-ce";
-    docker-machine ssh $i "sudo ros console switch debian -f";
-    sleep 15;
-    docker-machine ssh $i "sudo apt update && sudo apt install -qqy ca-certificates";
+    do docker-machine create -d virtualbox $i;
 done
 
 # initialize Swarm Manager and tokens
@@ -39,3 +35,4 @@ docker-machine ssh pxcw3 "docker swarm join \
             --listen-addr $(docker-machine ip pxcw3) \
                 --advertise-addr $(docker-machine ip pxcw3) \
                     $(docker-machine ip pxcm1)"
+
