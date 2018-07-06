@@ -34,7 +34,7 @@ services:
     image: quay.io/coreos/etcd
     command:  etcd
     volumes:
-      - /usr/share/ca-certificates/:/etc/ssl/certs
+      - /usr/local/etc/ssl/certs/:/etc/ssl/certs
     env_file: etcd.env
     networks:
       - galera
